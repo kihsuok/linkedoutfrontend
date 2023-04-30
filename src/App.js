@@ -21,17 +21,17 @@ function App () {
     <BrowserRouter>
       <Routes>
         <Route path="/linkedoutfrontend" element={<Login />}/>
-        <Route path='/linkedoutfrontend/register' element={<Register />} />
-        <Route path='/linkedoutfrontend/login' element={<Login />} />
-        <Route path='/linkedoutfrontend/job-board' element={<JobBoard />} />
-        <Route path='/linkedoutfrontend/job-description/:id' element={<JobDescription />} />
-        <Route path='/linkedoutfrontend/applied-jobs' element={<AppliedJobs />} />
-        <Route path='/linkedoutfrontend/admin-login' element={<AdminLogin />} />
-        <Route path='/linkedoutfrontend/admin-board' element={<AdminBoard />} />
-        <Route path='/linkedoutfrontend/job-applicants/:id' element={<JobApplicants />} />
-        <Route path='/linkedoutfrontend/applicant-profile/:email' element={<ApplicantProfile />} />
-        <Route path='/linkedoutfrontend/create-job' element={<CreateJob/>}/>
-        <Route path='/linkedoutfrontend/profile' element={<Profile/>}/>
+        <Route path='/register' element={<Register />} />
+        <Route path='/login' element={<Login />} />
+        <Route path='/job-board' element={<JobBoard />} />
+        <Route path='/job-description/:id' element={<JobDescription />} />
+        <Route path='/applied-jobs' element={<AppliedJobs />} />
+        <Route path='/admin-login' element={<AdminLogin />} />
+        <Route path='/admin-board' element={<AdminBoard />} />
+        <Route path='/job-applicants/:id' element={<JobApplicants />} />
+        <Route path='/applicant-profile/:email' element={<ApplicantProfile />} />
+        <Route path='/create-job' element={<CreateJob/>}/>
+        <Route path='/profile' element={<Profile/>}/>
 
       </Routes>
       <ToastContainer />
