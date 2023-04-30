@@ -1,6 +1,6 @@
 import './App.css'
 // import Profile from './components/Profile';
-import { HashRouter, Routes, Route } from 'react-router-dom'
+import { BrowserRouter, Routes, Route } from 'react-router-dom'
 import Register from './components/user/Register';
 import Login from './components/user/Login';
 import AppliedJobs from './components/user/AppliedJobs';
@@ -18,7 +18,7 @@ import 'react-toastify/dist/ReactToastify.css'
 function App () {
   return (
     
-    <HashRouter>
+    <BrowserRouter>
       <Routes>
         <Route path="/linkedoutfrontend" element={<Login />}/>
         <Route path='/register' element={<Register />} />
@@ -35,7 +35,7 @@ function App () {
 
       </Routes>
       <ToastContainer />
-    </HashRouter>
+    </BrowserRouter>
   )
 }
 
