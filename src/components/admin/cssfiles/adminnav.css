@@ -1,0 +1,47 @@
+#adminnav {
+    background-color: #333;
+    overflow: hidden;
+    padding: 10px;
+  }
+  
+  #adminnav ul {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+    overflow: hidden;
+  }
+  
+  #adminnav li {
+    float: left;
+  }
+  
+  #adminnav li a {
+    display: block;
+    color: white;
+    text-align: center;
+    padding: 10px 16px;
+    text-decoration: none;
+  }
+  
+  #adminnav li a:hover {
+    background-color: #ddd;
+    color: black;
+  }
+  
+  #adminnav #adminlogout {
+    float: right;
+    display: block;
+    color: white;
+    text-align: center;
+    padding: 10px 16px;
+    text-decoration: none;
+    background-color: #ff0000;
+    border: none;
+    cursor: pointer;
+    border-radius: 10px;
+  }
+  
+  #adminlogout:hover {
+    background-color: #ff5555;
+  }
+  

@@ -1,0 +1,130 @@
+*{
+    font-family:'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+    text-decoration: none;
+    color: rgb(0, 0, 0);
+  }
+  
+  #admincard{
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    padding: 20px;
+    margin: 10px;
+    width: 60%;
+    position: relative;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.2);
+    transition: all 0.3s ease-in-out;
+    scale: .95;
+  }
+  
+  .job-card {
+      background-color: rgb(107, 237, 137);
+    }
+  
+    .job-cardwarning {
+      background-color: rgb(245, 245, 179);
+    }
+  
+    .job-carddanger {
+      background-color: rgb(241, 49, 49);
+    }
+  
+    .job-cardexpired {
+      background-color: rgb(110, 110, 110);
+  
+    }
+    
+    .job-cardexpired:hover {
+      transform: scale(1.05);
+      box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+    }
+    
+    .job-carddanger:hover {
+      transform: scale(1.05);
+      box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+    }
+  
+    .job-cardwarning:hover {
+      transform: scale(1.05);
+      box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+    }
+  
+    .job-card:hover {
+      transform: scale(1.05);
+      box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+    }
+  
+  
+    .job-card h3 {
+      font-size: 24px;
+      margin-bottom: 10px;
+    }
+    
+    .job-card .location {
+      color: #999;
+      font-size: 18px;
+      margin-bottom: 10px;
+    }
+    
+    .job-card .deadline {
+      color: #999;
+      font-size: 16px;
+      margin-bottom: 10px;
+    }
+    
+    #archive ,#unarchive{
+      position: absolute;
+      bottom: 20px;
+      right: 20px;
+      background-color: #007bff;
+      color: #fff;
+      border: none;
+      border-radius: 5px;
+      padding: 5px 10px;
+      font-size: 14px;
+      cursor: pointer;
+      transition: all 0.3s ease-in-out;
+      scale: 0.9;
+    }
+  
+    
+    #apply:hover {
+      background-color: #0069d9;
+      scale: 0.95;
+    }
+  
+  #adminboard{
+    
+    display: flex;
+    /* flex-wrap: wrap; */
+    flex-direction: column;
+    justify-content: center;
+    text-align: center;
+    margin-left: 25%;
+  }
+    
+  
+  .job-card h3 {
+    text-decoration: none;
+  }
+
+  input, textarea{
+    width: 40%;
+    height: 25px;
+    border-radius: 5px;
+  }
+
+#applicant{
+      /* position: absolute; */
+      bottom: 20px;
+      right: 20px;
+      background-color: #007bff;
+      color: #fff;
+      border: none;
+      border-radius: 5px;
+      padding: 5px 10px;
+      font-size: 14px;
+      cursor: pointer;
+      transition: all 0.3s ease-in-out;
+      scale: 0.9;
+}
+    

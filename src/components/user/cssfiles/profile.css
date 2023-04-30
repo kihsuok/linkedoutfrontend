@@ -1,0 +1,84 @@
+/* Profile page container */
+.profile-container {
+    margin: 0 auto;
+    max-width: 600px;
+    padding: 20px;
+  }
+  
+  /* Profile page title */
+  .profile-title {
+    font-size: 2rem;
+    font-weight: bold;
+    margin-bottom: 20px;
+  }
+  
+  /* Profile page form */
+  .profile-form {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    margin-bottom: 20px;
+  }
+  
+  /* Profile page form labels */
+  .profile-form label {
+    font-size: 1.2rem;
+    font-weight: bold;
+  }
+  
+  /* Profile page form inputs */
+  .profile-form input,
+  .profile-form textarea {
+    border: 2px solid #ccc;
+    border-radius: 5px;
+    padding: 10px;
+    font-size: 1rem;
+  }
+  
+  /* Profile page form submit button */
+  .profile-form button[type="submit"] {
+    background-color: #007bff;
+    color: #fff;
+    border: none;
+    border-radius: 5px;
+    padding: 10px;
+    cursor: pointer;
+    font-size: 1.2rem;
+    font-weight: bold;
+    transition: all 0.3s ease;
+  }
+  
+  .profile-form button[type="submit"]:hover {
+    background-color: #0062cc;
+  }
+  
+  /* Profile page info section */
+  .profile-info {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    margin-bottom: 20px;
+  }
+  
+  /* Profile page info labels */
+  .profile-info p {
+    font-size: 1.2rem;
+  }
+  
+  /* Profile page update button */
+  .profile-update-btn {
+    background-color: #007bff;
+    color: #fff;
+    border: none;
+    border-radius: 5px;
+    padding: 10px;
+    cursor: pointer;
+    font-size: 1.2rem;
+    font-weight: bold;
+    transition: all 0.3s ease;
+  }
+  
+  .profile-update-btn:hover {
+    background-color: #0062cc;
+  }
+  
