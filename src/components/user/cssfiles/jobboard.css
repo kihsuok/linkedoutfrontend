@@ -6,7 +6,7 @@
 #jobcard{
   border: 1px solid #ccc;
   border-radius: 5px;
-  padding: 20px;
+  padding: 30px;
   margin: 10px;
   width: 60%;
   position: relative;
@@ -71,15 +71,32 @@
   }
   
   #apply {
-    position: absolute;
+    position: relative;
+    float: right;
     bottom: 20px;
+    /* right: 10px; */
+    background-color: #007bff;
+    color: #fff;
+    border: none;
+    border-radius: 5px;
+    padding: 10px 20px;
+    font-size: 14px;
+    cursor: pointer;
+    transition: all 0.3s ease-in-out;
+    scale: 0.9;
+  }
+
+  #viewdescription{
+    position: relative;
+    bottom: 20px;
+    float: left;
     right: 20px;
     background-color: #007bff;
     color: #fff;
     border: none;
     border-radius: 5px;
     padding: 10px 20px;
-    font-size: 18px;
+    font-size: 14px;
     cursor: pointer;
     transition: all 0.3s ease-in-out;
     scale: 0.9;

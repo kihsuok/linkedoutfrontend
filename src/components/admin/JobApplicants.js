@@ -27,7 +27,7 @@ function JobApplicants () {
   }
 
   return (
-    <div>
+    <div id="applicantlist">
       <h1> Applicant Mail IDs {id}</h1>
       {/* <p>This is the description for job {id}.</p> */}
       <ol>

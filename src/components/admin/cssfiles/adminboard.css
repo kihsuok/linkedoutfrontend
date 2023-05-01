@@ -10,6 +10,7 @@
     padding: 20px;
     margin: 10px;
     width: 60%;
+    /* height: 40%; */
     position: relative;
     box-shadow: 0 2px 4px rgba(0,0,0,0.2);
     transition: all 0.3s ease-in-out;
@@ -122,9 +123,33 @@
       border: none;
       border-radius: 5px;
       padding: 5px 10px;
-      font-size: 14px;
+      width: 25%;
+      font-size: 18px;
       cursor: pointer;
       transition: all 0.3s ease-in-out;
       scale: 0.9;
+}
+
+#viewapplicants{
+  /* position: absolute; */
+  /* position: absolute; */
+  position: relative;
+  bottom: 20px;
+  float: left;
+  right: 20px;
+  background-color: #007bff;
+  color: #fff;
+  border: none;
+  border-radius: 5px;
+  padding: 5px 10px;
+  font-size: 14px;
+  cursor: pointer;
+  transition: all 0.3s ease-in-out;
+  scale: 0.9;
+}
+
+#applicantlist{
+  justify-content: center;
+  /* align-items: center; */
 }
     
