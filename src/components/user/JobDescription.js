@@ -20,10 +20,10 @@ function JobDescription () {
   }, [id])
 
   return (
-    <div >
+    <div  >
       <h1>Job Description for Job {id}</h1>
       <p>This is the description for job {id}.</p>
-      <p> {description}</p>
+      <pre id="jobdesc"> {description}</pre>
     </div>
   )
 }
