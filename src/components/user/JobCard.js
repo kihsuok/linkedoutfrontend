@@ -34,7 +34,7 @@ function JobCard ({
       email: email,
       id: id
     })
-    // window.location.reload()
+    window.location.reload()
   }
 
   return (

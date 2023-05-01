@@ -17,7 +17,7 @@ function JobCard ({
       id: id,
       archived: archivestatus
     })
-    // window.location.reload()
+    window.location.reload()
   }
 
   const calculateDaysLeft = () => {
