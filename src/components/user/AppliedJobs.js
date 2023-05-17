@@ -5,13 +5,16 @@ import {useState, useEffect} from 'react';
 import NavBar from './NavBar'
 import JobCard from './JobCard'
 import jwt from "jsonwebtoken";
-import './cssfiles/jobboard.css'
+import './cssfiles/jobboard.css';
+import loadingimage from '../../loading.gif'
+
 
 function AppliedJobs () {
 
   const nav = useNavigate();
 
   const [email, setEmail] = useState("");
+  const [loading,setLoading] = useState(false)
 
   useEffect(() => {
     const checkAuthorization = () => {
@@ -40,6 +43,7 @@ function AppliedJobs () {
 
   useEffect(() => {
     async function fetchAppliedJobs() {
+      setLoading(true)
         const res = await axios.post("https://linkedoutbackend.onrender.com/user/applied-jobs", {email: email});
         const appliedJobs = res.data.appliedJobs;
         // console.log("applied job ids:" ,appliedJobIds);
@@ -58,11 +62,21 @@ function AppliedJobs () {
                 contact={job.contact}
                 hasApplied={true}
                 />));
+                setLoading(false)
             
     }
     // if (email != "") 
     fetchAppliedJobs();
   }, [email]);
+
+  if (loading) {
+    return (
+      <div className="jobboard">
+        <NavBar />
+        <img src={loadingimage} alt="Loading..." style={{marginTop:"17%",marginLeft:"49%"}} />
+      </div>
+    )
+  } 
 
   return (
     <div>

@@ -6,6 +6,7 @@ import NavBar from './NavBar'
 import JobCard from './JobCard'
 import jwt from 'jsonwebtoken'
 import './cssfiles/jobboard.css'
+import loadingimage from '../../loading.gif'
 
 
 function JobBoard () {
@@ -33,70 +34,7 @@ function JobBoard () {
 
   const [jobCards, setJobCards] = useState([])
   const [jobs, setJobs] = useState([])
-
-
-  // useEffect(() => {
-  //   async function fetchJobs () {
-  //     const res = await axios.get('http://localhost:3000/user/jobs')
-  //     const returnedjobs = res.data.jobs
-  //     const newres = await axios.get('http://localhost:3000/admin/getorder')
-  //     const order= newres.data.order;
-  //     console.log(order);
-  //     console.log("returned",returnedjobs);
-  //     const sortedJobs = [];
-
-  //     order.forEach((jobId) => {
-  //       const job = returnedjobs.find((job) => job.id === jobId);
-  //       if (job) {
-  //         sortedJobs.push(job);
-  //       }
-  //     });
-      
-  //     setJobs(sortedJobs)
-
-  //     const res2 = await axios.post("http://localhost:3000/user/applied-jobs", {email: email});
-  //     const appliedJobIds = res2.data.appliedJobs.map(job => job.id);
-
-  //     console.log("applied:" , appliedJobIds);
-  //     console.log("jobs:", jobs);
-
-  //     var b = new Set(appliedJobIds)
-  //     var unappliedJobs = [...jobs].filter(x => ! b.has(x.id));
-
-  //     // appliedJobs=jobs-appliedJobs
-  //     setJobCards(
-  //       unappliedJobs.map(job => (
-  //         <JobCard
-  //           id={job.id}
-  //           title={job.title}
-  //           location={job.location}
-  //           deadline={job.deadline}
-  //           contact={job.contact}
-  //           email={email}
-  //           archived={job.archived}
-  //           hasApplied={false}
-  //         />
-  //       ))
-  //     )
-
-
-  //   setJobCards(
-  //     unappliedJobs.map(job => (
-  //       <JobCard
-  //         id={job.id}
-  //         title={job.title}
-  //         location={job.location}
-  //         deadline={job.deadline}
-  //         contact={job.contact}
-  //         email={email}
-  //       />
-  //     ))
-  //   )}
-  
-
-  //   fetchJobs()
-  // }, [email,jobs])
-  
+  const [loading,setLoading]=useState(false)  
   const [sortedJobs, setSortedJobs] = useState([]);
 
   useEffect(() => {
@@ -116,10 +54,28 @@ function JobBoard () {
         }
       });
   
+      setLoading(true)
       // Fetch applied jobs and filter out already applied jobs
+
       const res2 = await axios.post("https://linkedoutbackend.onrender.com/user/applied-jobs", {email: email});
-      const appliedJobIds = res2.data.appliedJobs.map(job => job.id);
-      const unappliedJobs = sortedJobs.filter(job => !appliedJobIds.includes(job.id));
+
+
+      function fetchUnapplied(){
+        const appliedJobIds = res2.data.appliedJobs.map(job => job.id);
+        const unappliedJobs = sortedJobs.filter(job => !appliedJobIds.includes(job.id));
+        return unappliedJobs
+      }
+
+      // function fetchUnapplied() {
+      //   console.log(res2)
+      //   return sortedJobs.filter(job => !res2.data.appliedJobs.map(appliedJob => appliedJob.id).includes(job.id));
+      // }
+      
+
+      const unappliedJobs = fetchUnapplied()
+      console.log(unappliedJobs)
+
+      
   
       // Update the state of jobs and jobCards
       setJobs(sortedJobs)
@@ -135,10 +91,22 @@ function JobBoard () {
           />
         ))
       )
+      setLoading(false)
+
     }
-  
+    
+
     fetchJobs()
-  }, [email, sortedJobs])
+  }, [email])
+
+  if (loading) {
+    return (
+      <div className="jobboard">
+        <NavBar />
+        <img src={loadingimage} alt="Loading..." style={{marginTop:"17%",marginLeft:"49%"}} />
+      </div>
+    )
+  } 
   
 
   return (

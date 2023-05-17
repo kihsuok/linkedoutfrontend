@@ -2,9 +2,8 @@ import React, { useState, useEffect } from 'react';
 import AdminNav from './AdminNav';
 import {useNavigate} from 'react-router-dom';
 import { toast } from 'react-toastify';
-import jwt from 'jsonwebtoken'
-
-
+import jwt from 'jsonwebtoken';
+import loadingimage from '../../loading.gif'
 
 const CreateJob = () => {
   const [id, setId] = useState('');
@@ -14,6 +13,7 @@ const CreateJob = () => {
   const [location, setLocation] = useState('');
   const [contact, setContact] = useState('');
   const [email, setEmail] = useState('');
+  const [loading, setLoading] = useState(false)
   const nav=useNavigate();
 
   useEffect(() => {
@@ -42,6 +42,7 @@ const CreateJob = () => {
     location,
     contact
   ) {
+    setLoading(true)
     const res = await fetch('https://linkedoutbackend.onrender.com/admin/createjob', {
       method: 'POST',
       headers: {
@@ -59,6 +60,7 @@ const CreateJob = () => {
 
     const data = await res.json()
     console.log(data)
+    setLoading(false)
 
     if (data.status === 'ok') {
       toast.success('Job created successfully!', { theme: 'colored' })
@@ -78,18 +80,15 @@ const CreateJob = () => {
     AddJob(id, title, description, deadline, location, contact)
   }
 
-//   const handleSubmit = (e) => {
-//     e.preventDefault();
-//     // Do something with the form data, like send it to a server
 
-//     console.log({
-//       title,
-//       description,
-//       deadline,
-//       location,
-//       contact,
-//     });
-//   };
+  if (loading) {
+    return (
+      <div className="jobboard">
+        <AdminNav />
+        <img src={loadingimage} alt="Loading..." style={{marginTop:"17%",marginLeft:"49%"}} />
+      </div>
+    )
+  } 
 
   return (
     <div>

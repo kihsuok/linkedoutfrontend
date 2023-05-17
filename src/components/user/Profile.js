@@ -4,12 +4,14 @@ import NavBar from './NavBar';
 import './cssfiles/profile.css'
 import jwt from 'jsonwebtoken';
 import axios from 'axios';
+import loadingimage from '../../loading.gif'
 
 function Profile() {
 
   const nav = useNavigate();
 
   const [email, setEmail] = useState("");
+  const [loading,setLoading] = useState(false)
   // const [name, setName] = useState('')
   // const [dob, setDob] = useState('')
   // const [phone, setPhone] = useState()
@@ -47,7 +49,7 @@ function Profile() {
     console.log("FETCHING");
     console.log(email);
     async function fetchProfile () {
-
+      setLoading(true)
       const res = await axios.post(
         'https://linkedoutbackend.onrender.com/user/profile',
         { email: email }
@@ -58,6 +60,7 @@ function Profile() {
       setEditedPhone(res.data.user.phone)
       setEditedQualifications(res.data.user.qualifications)
       setEditedExperience(res.data.user.experience)
+      setLoading(false)
     }
     fetchProfile();
   }, [email])
@@ -71,6 +74,7 @@ function Profile() {
 
   const handleSubmit = (event) => {
     event.preventDefault();
+    setLoading(true)
     axios.post('https://linkedoutbackend.onrender.com/user/update', {
       email: email,
       name: editedName,
@@ -81,7 +85,17 @@ function Profile() {
       
     })
     setIsEditing(false);
+    setLoading(false)
   };
+
+  if (loading) {
+    return (
+      <div className="jobboard">
+        <NavBar />
+        <img src={loadingimage} alt="Loading..." style={{marginTop:"17%",marginLeft:"49%"}} />
+      </div>
+    )
+  } 
 
   return (
     <div>

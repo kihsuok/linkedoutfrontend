@@ -6,9 +6,11 @@ import JobCard from './AdminJobCard'
 import jwt from 'jsonwebtoken'
 import { DragDropContext, Droppable, Draggable } from 'react-beautiful-dnd'
 import './cssfiles/adminboard.css'
+import loadingimage from '../../loading.gif'
+
 function AdminBoard() {
   const [email, setEmail] = useState('')
-
+  const [loading,setLoading] = useState(false)
   const nav = useNavigate()
 
   useEffect(() => {
@@ -33,6 +35,7 @@ function AdminBoard() {
 
   useEffect(() => {
     async function fetchJobs() {
+      setLoading(true)
       const res = await axios.get('https://linkedoutbackend.onrender.com/admin/jobs')
       const jobs = res.data.jobs
       const newres = await axios.get('https://linkedoutbackend.onrender.com/admin/getorder')
@@ -48,6 +51,7 @@ function AdminBoard() {
       });
 
       setJobs(sortedJobs)
+      setLoading(false)
     }
 
     fetchJobs()
@@ -81,6 +85,15 @@ function AdminBoard() {
     updateOrder()
 
   };
+
+  if (loading) {
+    return (
+      <div className="jobboard">
+        <AdminNav />
+        <img src={loadingimage} alt="Loading..." style={{marginTop:"17%",marginLeft:"49%"}} />
+      </div>
+    )
+  } 
 
   return (
     <div>

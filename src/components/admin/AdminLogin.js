@@ -4,15 +4,17 @@ import { toast } from 'react-toastify'
 import 'react-toastify/dist/ReactToastify.css'
 import { useNavigate } from 'react-router-dom'
 import LoginNav from '../LoginNav'
+import loadingimage from '../../loading.gif'
 
 function AdminLogin () {
   const [email, setEmail] = useState('')
   const [password, setPassword] = useState('')
+  const [loading,setLoading] = useState(false)
   const nav = useNavigate()
 
   async function handleSubmit (event) {
     event.preventDefault()
-
+    setLoading(true)
     const res = await axios.post('https://linkedoutbackend.onrender.com/admin/login', {
       email: email,
       password: password
@@ -25,7 +27,16 @@ function AdminLogin () {
     } else {
       toast.error('Login Unsuccessful', { theme: 'colored' })
     }
+    setLoading(false)
   }
+
+  if (loading) {
+    return (
+      <div className="jobboard">
+        <img src={loadingimage} alt="Loading..." style={{marginTop:"17%",marginLeft:"49%"}} />
+      </div>
+    )
+  } 
 
   return (
     <div>

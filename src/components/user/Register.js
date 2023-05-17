@@ -1,6 +1,7 @@
 import React, { useState } from 'react'
 import { useNavigate, Link } from 'react-router-dom'
 import { toast } from 'react-toastify'
+import loadingimage from '../../loading.gif'
 
 function RegisterPage () {
   const [name, setName] = useState('')
@@ -12,6 +13,7 @@ function RegisterPage () {
   const [password, setPassword] = useState('')
   const [confirmPassword, setConfirmPassword] = useState('')
   const nav = useNavigate()
+  const [loading,setLoading]= useState(false)
 
   async function checkEmailExists (email) {
     return false
@@ -26,6 +28,7 @@ function RegisterPage () {
     experience,
     password
   ) {
+    setLoading(true)
     const res = await fetch('https://linkedoutbackend.onrender.com/user/register', {
       method: 'POST',
       headers: {
@@ -45,7 +48,7 @@ function RegisterPage () {
 
     const data = await res.json()
     console.log(data)
-
+    setLoading(false)
     if (data.status === 'ok') {
       toast.success('User account created successfully!', { theme: 'colored' })
       // Redirect the user to the sign-in page
@@ -73,6 +76,14 @@ function RegisterPage () {
 
     registerUser(name, dob, email, phone, qualifications, experience, password)
   }
+
+  if (loading) {
+    return (
+      <div className="loading-overlay">
+        <img src={loadingimage} alt="Loading..." style={{marginTop:"17%",marginLeft:"49%"}} />
+      </div>
+    )
+  } 
 
   return (
     <div>

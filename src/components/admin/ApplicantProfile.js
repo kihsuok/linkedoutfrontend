@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react'
 import { useParams } from 'react-router-dom'
 import axios from 'axios';
+import loadingimage from '../../loading.gif'
 
 function Profile () {
   const { email } = useParams()
@@ -9,10 +10,12 @@ function Profile () {
   const [phone, setPhone] = useState()
   const [qualifications, setQualifications] = useState()
   const [experience, setExperience] = useState()
+  const [loading,setLoading] = useState(false)
 
   useEffect(() => {
     console.log("FETCHING");
     async function fetchProfile () {
+      setLoading(true)
       const res = await axios.post(
         'https://linkedoutbackend.onrender.com/admin/applicant-profile',
         { email: email }
@@ -23,9 +26,18 @@ function Profile () {
       setPhone(res.data.jobApplicant.phone)
       setQualifications(res.data.jobApplicant.qualifications)
       setExperience(res.data.jobApplicant.experience)
+      setLoading(false)
     }
     fetchProfile();
   }, [email])
+
+  if (loading) {
+    return (
+      <div className="jobboard">
+        <img src={loadingimage} alt="Loading..." style={{marginTop:"17%",marginLeft:"49%"}} />
+      </div>
+    )
+  } 
 
   return (
     <div>
